@@ -1,0 +1,24 @@
+---
+- name: "NAPALM Playbook"
+  hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    napalm_provider:
+      hostname: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+      dev_os: "{{ napalm_driver }}"
+      optional_args: {}
+  tasks:
+    - name: Get Facts via NAPALM
+      napalm.napalm.napalm_get_facts:
+        provider: "{{ napalm_provider }}"
+        filter:
+          - facts
+          - interfaces
+      register: result
+
+    - name: Print the result
+      debug:
+        msg: "{{ result.ansible_facts.napalm_facts }}"
