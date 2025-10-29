@@ -1,0 +1,15 @@
+---
+- name: My Second Play
+  hosts: A1
+  connection: network_cli
+  become: true
+
+  tasks:
+    - name: "Task 1 - Sending Show Command"
+      arista.eos.eos_command:
+        commands: show hostname
+      register: result
+
+    - name: "Task 2 - Print the Result"
+      debug:
+        msg: "{{ result }}"
