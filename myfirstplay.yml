@@ -1,6 +1,6 @@
 ---
 - name: Test Playbook
-  hosts: arista
+  hosts: A1
   connection: network_cli
   become: true
 
