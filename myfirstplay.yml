@@ -6,7 +6,7 @@
 
   tasks:
     - name: "Task 1 - Sending Show Command"
-      arista.eos.eos_command:
+      arista.eos.eeeeeeeeos_command:
         commands: show version
       register: result
 
